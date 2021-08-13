@@ -1,6 +1,6 @@
 name: 'App Pool Status'
 
-description: 'A GitHub action that returns the status an On-Prem IIS app pool'
+description: 'This action will return the status of an on-premises IIS app pool'
 
 inputs:
   server:

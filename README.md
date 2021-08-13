@@ -1,6 +1,6 @@
 # App Pool Status
 
-This action will start, stop, or restart an on-premises IIS app pool.
+This action will return the status of an on-premises IIS app pool
 
 ## Index <!-- omit in toc -->
 
@@ -23,9 +23,11 @@ This action will start, stop, or restart an on-premises IIS app pool.
 
 
 ## Outputs
+
 | Parameter         | Description                    |
 | ----------------- | ------------------------------ |
 | `app-pool-status` | The status of the IIS app pool |
+
 ## Prerequisites
 
 The IIS app pool action uses Web Services for Management, [WSMan], and Windows Remote Management, [WinRM], to create remote administrative sessions. Because of this, Windows OS GitHubs Actions Runners, `runs-on: [windows-2019]`, must be used. If the IIS server target is on a local network that is not publicly available, then specialized self hosted runners, `runs-on: [self-hosted, windows-2019]`,  will need to be used to broker commands to the server.
@@ -77,7 +79,10 @@ jobs:
       cert-path: './server-cert'
 
    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
     - name: IIS App Pool Status
+      id: get-status
       uses: 'im-open/app-pool-status@v1.0.0'
       with:
         server: ${{ env.server }}
@@ -85,6 +90,9 @@ jobs:
         service-account-id: ${{ secrets.iis_admin_user }}
         service-account-password: ${{ secrets.iis_admin_password }}
         server-public-key: ${{ env.cert-path }}
+    - name: 'Display Status'
+        shell: powershell
+        run: 'Write-Host ${{steps.get-status.outputs.app-pool-status}}'
   ...
 ```
 
