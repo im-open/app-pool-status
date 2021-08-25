@@ -24,9 +24,9 @@ This action will return the status of an on-premises IIS app pool
 
 ## Outputs
 
-| Parameter         | Description                    |
-| ----------------- | ------------------------------ |
-| `app-pool-status` | The status of the IIS app pool |
+| Parameter         | Description                    | Expected Results                     |
+| ----------------- | ------------------------------ | ------------------------------------ |
+| `app-pool-status` | The status of the IIS app pool | `[app-pool-name]: [Started|Stopped]` |
 
 ## Prerequisites
 
@@ -71,9 +71,9 @@ Prep the remote IIS server to accept WinRM management calls.  In general the IIS
 ...
 
 jobs:
-  restart-app-pool:
-   runs-on: [windows-2019]
-   env:
+  get-status:
+    runs-on: [windows-2019]
+    env:
       server: 'iis-server.domain.com'
       pool-name: 'website-pool'
       cert-path: './server-cert'
