@@ -25,7 +25,7 @@ Import-Certificate -Filepath $cert_path -CertStoreLocation 'Cert:\LocalMachine\R
 
 $script = {
     $app_pool = Get-IISAppPool -Name $Using:app_pool_name
-    return "$($app_pool.Name): $($app_pool.State)"
+    return $($app_pool.State)
 }
 
 $result = Invoke-Command -ComputerName $server `

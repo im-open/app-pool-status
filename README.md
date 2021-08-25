@@ -24,9 +24,9 @@ This action will return the status of an on-premises IIS app pool
 
 ## Outputs
 
-| Parameter         | Description                    | Expected Results                     |
-| ----------------- | ------------------------------ | ------------------------------------ |
-| `app-pool-status` | The status of the IIS app pool | `[app-pool-name]: [Started|Stopped]` |
+| Parameter         | Description                    | Expected Results    |
+| ----------------- | ------------------------------ | ------------------- |
+| `app-pool-status` | The status of the IIS app pool | `[Started|Stopped]` |
 
 ## Prerequisites
 
