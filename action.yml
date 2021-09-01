@@ -1,6 +1,6 @@
 name: 'App Pool Status'
 
-description: 'This action will return the status of an on-premises IIS app pool'
+description: 'This action will return the status of an IIS app pool hosted by an on-premises server'
 
 inputs:
   server:
