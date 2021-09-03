@@ -78,7 +78,7 @@ jobs:
 
    steps:
     - name: IIS App Pool Status
-      uses: 'im-open/app-pool-status@v1.0.0'
+      uses: 'im-open/app-pool-status@v1.0.1'
       with:
         server: ${{ env.server }}
         app-pool-name: ${{ env.pool-name }}
