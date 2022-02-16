@@ -15,13 +15,13 @@ This action will return the status of an IIS app pool hosted by an on-premises s
 
 ## Inputs
 
-| Parameter                  | Is Required | Description                          |
-| -------------------------- | ----------- | ------------------------------------ |
-| `server`                   | true        | The name of the target server        |
-| `app-pool-name`            | true        | IIS app pool name                    |
-| `service-account-id`       | true        | The service account name             |
-| `service-account-password` | true        | The service account password         |
-| `server-public-key`        | true        | Path to remote server public ssl key |
+| Parameter                  | Is Required | Description                                                                                                      |
+| -------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------- |
+| `server`                   | true        | The name of the target server                                                                                    |
+| `app-pool-name`            | true        | IIS app pool name                                                                                                |
+| `service-account-id`       | true        | The service account name                                                                                         |
+| `service-account-password` | true        | The service account password                                                                                     |
+| `server-cert-path`         | false       | Path to remote server public ssl cert, only necessary if the cert is not already installed on the actions runner |
 
 
 ## Outputs
@@ -80,20 +80,18 @@ jobs:
     env:
       server: 'iis-server.domain.com'
       pool-name: 'website-pool'
-      cert-path: './server-cert'
 
    steps:
     - name: Checkout
       uses: actions/checkout@v2
     - name: IIS App Pool Status
       id: get-status
-      uses: 'im-open/app-pool-status@v1.0.0'
+      uses: 'im-open/app-pool-status@v2.0.0'
       with:
         server: ${{ env.server }}
         app-pool-name: ${{ env.pool-name }}
         service-account-id: ${{ secrets.iis_admin_user }}
         service-account-password: ${{ secrets.iis_admin_password }}
-        server-public-key: ${{ env.cert-path }}
     - name: 'Display Status'
         shell: powershell
         run: 'Write-Host ${{steps.get-status.outputs.app-pool-status}}'

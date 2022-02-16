@@ -7,15 +7,17 @@ Param(
     [string]$user_id,
     [parameter(Mandatory = $true)]
     [SecureString]$password,
-    [parameter(Mandatory = $true)]
+    [parameter(Mandatory = $false)]
     [string]$cert_path
 )
 
 $display_action = 'App Pool Status'
 $display_action_past_tense = "$display_action Returned"
 
-Write-Output "IIS $display_action"
-Write-Output "Server: $server - App Pool: $app_pool_name"
+if ($cert_path -gt 0) {
+    Write-Output "IIS $display_action"
+    Write-Output "Server: $server - App Pool: $app_pool_name"
+}
 
 $credential = [PSCredential]::new($user_id, $password)
 $so = New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck
