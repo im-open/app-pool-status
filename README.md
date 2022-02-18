@@ -15,14 +15,12 @@ This action will return the status of an IIS app pool hosted by an on-premises s
 
 ## Inputs
 
-| Parameter                  | Is Required | Description                                                                                                      |
-| -------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------- |
-| `server`                   | true        | The name of the target server                                                                                    |
-| `app-pool-name`            | true        | IIS app pool name                                                                                                |
-| `service-account-id`       | true        | The service account name                                                                                         |
-| `service-account-password` | true        | The service account password                                                                                     |
-| `server-cert-path`         | false       | Path to remote server public ssl cert, only necessary if the cert is not already installed on the actions runner |
-
+| Parameter                  | Is Required | Description                   |
+| -------------------------- | ----------- | ----------------------------- |
+| `server`                   | true        | The name of the target server |
+| `app-pool-name`            | true        | IIS app pool name             |
+| `service-account-id`       | true        | The service account name      |
+| `service-account-password` | true        | The service account password  |
 
 ## Outputs
 
