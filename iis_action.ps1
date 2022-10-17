@@ -29,6 +29,6 @@ $result = Invoke-Command -ComputerName $server `
     -SessionOption $so `
     -ScriptBlock $script
 
-Write-Output "::set-output name=app-pool-status::$result"
+Write-Output "app-pool-status=$result" >> $GITHUB_OUTPUT
 
 Write-Output "IIS $display_action_past_tense."
