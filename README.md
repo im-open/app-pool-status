@@ -84,7 +84,8 @@ jobs:
       uses: actions/checkout@v3
     - name: IIS App Pool Status
       id: get-status
-      uses: 'im-open/app-pool-status@v1.1.0'
+      # You may also reference the major or major.minor version
+      uses: im-open/app-pool-status@v1.1.1
       with:
         server: ${{ env.server }}
         app-pool-name: ${{ env.pool-name }}
