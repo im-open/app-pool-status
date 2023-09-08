@@ -1,3 +1,7 @@
+# DEPRECATED
+
+This action was deprecated on 2023-09-08 and will no longer receive support or updates.
+
 # App Pool Status
 
 This action will return the status of an IIS app pool hosted by an on-premises server
